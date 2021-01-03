@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>home</title>
+</head>
+
+<body>
+    <div class="jombotron">
+        <div class="container mt-5">
+            <div class="row ">
+                <div class="col-md d-flex justify-content-center">
+                    <h1>IMAGE INFO</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md d-flex justify-content-center ">
+                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                <div class="container mt-5">
+                    <div class="row ">
+                        <div class="col-md d-flex justify-content-center">
+                            <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+                            <p><img id="output" width="200" /></p>
+                            <script>
+                            var loadFile = function(event) {
+                                var image = document.getElementById('output');
+                                image.src = URL.createObjectURL(event.target.files[0]);
+                            };
+                            </script>
+                            <hr>
+                            {% for file in files %}
+                              <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- <a href="/add">Add name</a><br><br>
+    <a href="/view">List Records</a><br><br>
+    <a href="/delete">Delete Record</a><br><br> -->
+</body>
+
+</html>
+
